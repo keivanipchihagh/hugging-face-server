@@ -1,6 +1,7 @@
 services:
   app:
     container_name: hugging-face-server
+    image: hugging-face-server:latest
     build:
       context: ..
       dockerfile: deploy/Dockerfile

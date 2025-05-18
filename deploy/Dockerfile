@@ -18,7 +18,7 @@ RUN pip config set global.extra-index-url https://download.pytorch.org/whl/cpu
 RUN --mount=type=cache,target=/root/.cache \
     pip install --upgrade pip
 RUN --mount=type=cache,target=/root/.cache \
-    pip install -r requirements.txt
+    pip install --prefix=/install -r requirements.txt
 
 # Copy application code
 COPY . .
@@ -34,8 +34,8 @@ COPY --from=builder /install /usr/local
 # Copy application code
 COPY --from=builder /app /app
 
-# Expose port and set unbuffered stdout/stderr
+# Set unbuffered stdout/stderr
 ENV PYTHONUNBUFFERED=1
 
-# Default command—adjust to your entrypoint as needed
-CMD ["src/main.py"]
+# Default entrypoint
+CMD ["python3", "-u", "src/main.py"]
