@@ -7,7 +7,7 @@ install:
 	pip install -r requirements.txt
 
 docker-up:
-	docker compose -f deploy/docker-compose.yaml up -d --build
+	DOCKER_BUILDKIT=1 docker compose -f deploy/docker-compose.yaml up -d --build
 
 docker-down:
 	docker compose -f deploy/docker-compose.yaml down
