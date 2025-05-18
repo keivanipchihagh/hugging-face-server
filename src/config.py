@@ -15,4 +15,4 @@ class Config:
     LOG_LEVEL: str = getenv("LOG_LEVEL", "INFO")
 
     # Hugging Face
-    EMBEDDING_MODEL_NAME: str = getenv("EMBEDDING_MODEL_NAME", "")
+    EMBEDDING_MODEL_NAME: str = getenv("EMBEDDING_MODEL_NAME")

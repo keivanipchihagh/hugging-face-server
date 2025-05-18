@@ -13,4 +13,4 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - ../.huggingface:/root/.cache/huggingface
+      - ~/.cache/huggingface:/root/.cache/huggingface

@@ -5,9 +5,9 @@ from huggingface import Embedder
 router = APIRouter()
 
 @router.get(
-    path        = "/api/health",
+    path        = "/health",
     status_code = status.HTTP_200_OK,
-    tags        = ['api', 'health'],
+    tags        = ['health'],
 )
 async def health():
     return "OK"
