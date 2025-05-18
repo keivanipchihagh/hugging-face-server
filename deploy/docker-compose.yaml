@@ -1,0 +1,15 @@
+services:
+  app:
+    container_name: hugging-face-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "{API_HTTP_PORT:-80}:80"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:80/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ../.huggingface:/root/.cache/huggingface
