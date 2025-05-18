@@ -10,7 +10,7 @@ from huggingface import Embedder
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.embedder = Embedder(
-        name = Config.EMBEDDING_MODEL_NAME,
+        model_name = Config.EMBEDDING_MODEL_NAME,
     )
     yield
 
