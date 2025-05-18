@@ -21,7 +21,13 @@ async def health():
 async def embed_documents(request: Request) -> Response:
     payload: dict = await request.json()
 
-    texts = payload["texts"]
+    if "inputs" not in payload:
+        return Response(
+            content = "inputs field is required",
+            status_code = status.HTTP_400_BAD_REQUEST,
+        )
+
+    texts = payload["inputs"]
 
     embedder: Embedder = request.app.state.embedder
     embeddings = embedder.embed_documents(texts)
